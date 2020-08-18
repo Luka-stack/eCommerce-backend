@@ -7,8 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@CrossOrigin()
+@CrossOrigin
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Page<Product> findByCategoryId(@RequestParam Long id, Pageable pageable);
+
+    Page<Product> findByNameContaining(@RequestParam String name, Pageable pageable);
 }
